@@ -1,4 +1,4 @@
-# multi-service-app
+# Multi-Service-App
 
 ![Project: multi-service-app](https://img.shields.io/badge/project-multi--service--app-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)
