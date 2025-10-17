@@ -14,13 +14,22 @@ function App() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (!data) return <div>Error loading data</div>;
+  if (loading) return <div className="App-header">Loading...</div>;
+  if (!data) return <div className="App-header">Error loading data</div>;
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Welcome to Multi-Service App</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div className="App-header">
+      <div style={{ maxWidth: 800, margin: '0 auto', padding: 24 }}>
+        <h1>Multi-Service App</h1>
+        <p style={{ color: '#cfcfcf' }}>A small demo of a React frontend consuming a Node/Express API.</p>
+        <div className="card">
+          <h3>API response</h3>
+          <pre style={{ textAlign: 'left' }}>{JSON.stringify(data, null, 2)}</pre>
+          <div style={{ marginTop: 12 }}>
+            <button onClick={() => window.location.reload()}>Refresh</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
