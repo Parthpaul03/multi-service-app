@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Multi-Service-App
 
 Dockerized multi-service starter: React frontend, Node/Express backend, Nginx reverse-proxy, and supporting services (Mongo, Redis) orchestrated with Docker Compose.
@@ -7,24 +8,16 @@ Dockerized multi-service starter: React frontend, Node/Express backend, Nginx re
 Requirements: Docker Desktop (includes Docker Compose)
 
 ```powershell
-docker-compose up --build
-# or detached
-docker-compose up -d --build
-```
+# Multi-Service Dockerized Application
 
-Visit: http://localhost
+This repository contains a complete example of building and orchestrating a multi-service application using Docker and Docker Compose.
 
-Health endpoints:
-- Backend: http://localhost/health
-- API: http://localhost/api/data
-
-## Local development
-
-Backend:
-
-# Multi-Service-App
-
-Dockerized multi-service starter: React frontend, Node/Express backend, Nginx reverse-proxy, and supporting services (Mongo, Redis) orchestrated with Docker Compose.
+Features:
+- Frontend: React app served with Nginx (multi-stage Docker build)
+- Backend: Node.js + Express API
+- Database: MongoDB with persistent volume
+- Cache: Redis with persistent volume
+- Reverse proxy: Nginx service to serve frontend and proxy API requests
 
 ## Quick start
 
@@ -93,3 +86,4 @@ This project is released under the MIT License (see `LICENSE`).
 ---
 
 If you want, I can run Docker Compose now and perform smoke tests to verify everything is up, or implement additional improvements (frontend polish, CI expansion, secrets management).
+
