@@ -1,50 +1,48 @@
 # Multi-Service-App
 
-![Project: multi-service-app](https://img.shields.io/badge/project-multi--service--app-blue)
-![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)
+Dockerized multi-service starter: React frontend, Node/Express backend, Nginx reverse-proxy, and supporting services (Mongo, Redis) orchestrated with Docker Compose.
 
-A containerized multi-service starter project: React frontend, Node/Express backend, and Nginx reverse-proxy orchestrated with Docker Compose. Designed for easy local development and deployment.
+## Quick start
 
----
-
-## Quick Links
-
-- Repository: https://github.com/Parthpaul03/multi-service-app
-
----
-
-## Overview
-
-This repository contains a simple multi-service web application with the following pieces:
-
-- `frontend/` — React single-page application (Create React App structure)
-- `backend/` — Node.js + Express API server
-- `nginx/` — Nginx configuration used by the Docker image
-- `docker-compose.yml` — orchestrates services for local development
-
-The goal: run the entire stack locally with one command and keep service code separate for easy development.
-
-## Badges
-
-Add CI, Docker Hub, or other badges here when you enable them (GitHub Actions, Docker build, etc.).
-
-## Quick start (Dockerized)
-
-Prerequisites:
-
-- Docker Desktop (with Docker Compose)
-
-Start the whole stack:
+Requirements: Docker Desktop (includes Docker Compose)
 
 ```powershell
 docker-compose up --build
 # or detached
-docker-compose up --build -d
+docker-compose up -d --build
 ```
 
-Open http://localhost (or the port configured in `docker-compose.yml` / `nginx/default.conf`).
+Visit: http://localhost
 
-## Run services locally (recommended for development)
+Health endpoints:
+- Backend: http://localhost/health
+- API: http://localhost/api/data
+
+## Local development
+
+Backend:
+
+# Multi-Service-App
+
+Dockerized multi-service starter: React frontend, Node/Express backend, Nginx reverse-proxy, and supporting services (Mongo, Redis) orchestrated with Docker Compose.
+
+## Quick start
+
+Requirements: Docker Desktop (includes Docker Compose)
+
+```powershell
+docker-compose up --build
+# or detached
+docker-compose up -d --build
+```
+
+Visit: http://localhost
+
+Health endpoints:
+- Backend: http://localhost/health
+- API: http://localhost/api/data
+
+## Local development
 
 Backend:
 
@@ -62,7 +60,9 @@ npm install
 npm start
 ```
 
-If you run the frontend and backend separately, ensure the frontend dev server proxy or `REACT_APP_API_URL` points to the backend port.
+## Notes
+- `backend/package.json` includes a `start` script to run the server locally.
+- `.gitignore` added to keep node_modules and env files out of git.
 
 ## Project structure
 
@@ -88,9 +88,8 @@ Create `.env` files locally and do not commit them.
 
 ## License
 
-This project is released under the MIT License. Add a `LICENSE` file if you want.
+This project is released under the MIT License (see `LICENSE`).
 
 ---
 
-If you want, I can add CI, a LICENSE file, or badges next. Tell me what else you'd like included.
-# multi-service-app
+If you want, I can run Docker Compose now and perform smoke tests to verify everything is up, or implement additional improvements (frontend polish, CI expansion, secrets management).
