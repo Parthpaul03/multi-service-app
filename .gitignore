@@ -1,46 +1,25 @@
-# Node
+# Dependencies
 node_modules/
 **/node_modules/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Logs
-logs
-*.log
-pids
-*.pid
-*.seed
-*.pid.lock
-
 # Runtime
 .env
-.env.local
-.env.*.local
-
-# Editor
-.vscode/
-.idea/
-*.sublime-workspace
-
-# OS
-.DS_Store
-Thumbs.db
+.env.*
 
 # Build
 dist/
 build/
-coverage/
-/.cache
+
+# OS & editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
 # Docker
-*.tgz
-
-# Misc
-.eslintcache
-package-lock.json
-pnpm-lock.yaml
-/.parcel-cache
-
-# Ignore nested git metadata if converting subrepo to files
-/frontend/.git
+docker-compose.override.yml
