@@ -1,37 +1,54 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/data');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      setData(json);
+    } catch (err) {
+      setError(err.message || 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetch('/api/data')
-      .then(res => res.json())
-      .then(json => {
-        setData(json);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    fetchData();
   }, []);
-
-  if (loading) return <div className="App-header">Loading...</div>;
-  if (!data) return <div className="App-header">Error loading data</div>;
 
   return (
     <div className="App-header">
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: 24 }}>
-        <h1>Multi-Service App</h1>
-        <p style={{ color: '#cfcfcf' }}>A small demo of a React frontend consuming a Node/Express API.</p>
-        <div className="card">
-          <h3>API response</h3>
-          <pre style={{ textAlign: 'left' }}>{JSON.stringify(data, null, 2)}</pre>
-          <div style={{ marginTop: 12 }}>
-            <button onClick={() => window.location.reload()}>Refresh</button>
+      <div className="hero">
+        <div className="hero-content">
+          <h1>Multi-Service App</h1>
+          <p className="lead">A polished demo with React frontend, Node/Express backend, and Nginx + Docker Compose.</p>
+          <div className="hero-cta">
+            <button onClick={fetchData} className="btn primary">Refresh Data</button>
+            <a href="#demo" className="btn outline">View Data</a>
           </div>
         </div>
       </div>
+
+      <main className="container" id="demo">
+        <div className="card">
+          <h2>Live API Response</h2>
+          {loading && <div className="muted">Loading...</div>}
+          {error && <div className="error">Error: {error}</div>}
+          {data && <pre className="data-block">{JSON.stringify(data, null, 2)}</pre>}
+        </div>
+      </main>
     </div>
   );
 }
 
 export default App;
+
