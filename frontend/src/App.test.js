@@ -1,16 +1,22 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders app title', () => {
-  render(<App />);
-  const title = screen.getByText(/Multi-Service App/i);
-  expect(title).toBeInTheDocument();
+// Mock global fetch used by App
+beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({ ok: true, json: () => Promise.resolve({ message: 'Hello from backend API!' }) })
+  );
 });
-import { render, screen } from '@testing-library/react';
-import App from './App';
 
-test('renders learn react link', () => {
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
+test('renders main title and fetches API data', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/Multi-Service App/i)).toBeInTheDocument();
+
+  await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+  expect(await screen.findByText(/Hello from backend API!/i)).toBeInTheDocument();
 });
