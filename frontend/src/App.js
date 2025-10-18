@@ -26,24 +26,26 @@ function App() {
   }, []);
 
   return (
-    <div className="App-header">
-      <div className="hero">
-        <div className="hero-content">
+    <div className="App-root">
+      <header className="hero">
+        <div className="hero-inner">
           <h1>Multi-Service App</h1>
-          <p className="lead">A polished demo with React frontend, Node/Express backend, and Nginx + Docker Compose.</p>
-          <div className="hero-cta">
-            <button onClick={fetchData} className="btn primary">Refresh Data</button>
-            <a href="#demo" className="btn outline">View Data</a>
-          </div>
+          <p className="subtitle">React frontend • Node/Express backend • Docker Compose</p>
         </div>
-      </div>
+      </header>
 
-      <main className="container" id="demo">
+      <main className="container">
         <div className="card">
-          <h2>Live API Response</h2>
+          <h2>API response</h2>
+
           {loading && <div className="muted">Loading...</div>}
           {error && <div className="error">Error: {error}</div>}
+
           {data && <pre className="data-block">{JSON.stringify(data, null, 2)}</pre>}
+
+          <div className="controls">
+            <button onClick={fetchData} className="btn">Refresh</button>
+          </div>
         </div>
       </main>
     </div>
@@ -51,4 +53,3 @@ function App() {
 }
 
 export default App;
-
