@@ -15,165 +15,64 @@ Dockerized multi-service starter: React frontend, Node/Express backend, Nginx re
 
 ## Quick start
 
-Requirements: Docker Desktop (includes Docker Compose)
-
-```powershell
 # Multi-Service Dockerized Application
 
-This repository contains a complete example of building and orchestrating a multi-service application using Docker and Docker Compose.
+This repository contains a complete example of building and orchestrating a multi-service application using Docker and Docker Compose. It's designed as a starter for local development and small deployments.
 
->>>>>>> frontend-ui-work
-Features:
-- Frontend: React app served with Nginx (multi-stage Docker build)
-- Backend: Node.js + Express API
-- Database: MongoDB with persistent volume
-- Cache: Redis with persistent volume
-- Reverse proxy: Nginx service to serve frontend and proxy API requests
-<<<<<<< HEAD
-=======
+Features
+- React frontend served by Nginx (multi-stage Docker build)
+- Node.js + Express backend API
+- MongoDB and Redis services for persistence and caching
+- Nginx reverse-proxy to serve static files and proxy API requests
+- Docker Compose orchestration with healthchecks and volumes
 
-## Quick start
+Quick start (Docker)
+Prerequisites: Docker Desktop (includes Compose)
 
-Requirements: Docker Desktop (includes Docker Compose)
->>>>>>> frontend-ui-work
-
-Run locally:
 ```powershell
+cd c:\Users\parth\OneDrive\Desktop\multi-service-app
 docker-compose up --build
-<<<<<<< HEAD
+# or detached:
+docker-compose up --build -d
 ```
 
-<<<<<<< HEAD
-Access:
-- App: http://localhost/
-- Backend API: http://localhost/api/data
-# multi-service-app
-=======
-Open http://localhost (or the port configured in `docker-compose.yml` / `nginx/default.conf`).
-=======
-# or detached
-docker-compose up -d --build
-```
+Open http://localhost after startup.
 
-Visit: http://localhost
->>>>>>> frontend-ui-work
-
-Health endpoints:
+Health endpoints
 - Backend: http://localhost/health
 - API: http://localhost/api/data
 
-## Local development
+Local development
 
-Backend:
-
+Backend
 ```powershell
 cd backend
 npm install
 npm start
 ```
 
-Frontend:
-
+Frontend
 ```powershell
 cd frontend
 npm install
 npm start
 ```
 
-## Notes
-- `backend/package.json` includes a `start` script to run the server locally.
-- `.gitignore` added to keep node_modules and env files out of git.
-
-## Project structure
-
+Project structure
 - `frontend/` — React app sources
 - `backend/` — Express server sources
 - `nginx/` — reverse proxy configuration
 - `docker-compose.yml` — defines services, networks, and volumes
 
-## Environment variables
+Environment variables
+Create a `.env` locally (not checked in) for secrets and config. Example values are provided in `.env.example`.
 
-Add any necessary `.env` variables per service. Example:
-
-- Backend: `PORT`, `NODE_ENV`, `DATABASE_URL`
-- Frontend: `REACT_APP_API_URL`
-
-Create `.env` files locally and do not commit them.
-# Multi-Service Dockerized Application
-
-This repository contains a complete example of building and orchestrating a multi-service application using Docker and Docker Compose.
-
-Features:
-- Frontend: React app served with Nginx (multi-stage Docker build)
-- Backend: Node.js + Express API
-- Database: MongoDB with persistent volume
-- Cache: Redis with persistent volume
-- Reverse proxy: Nginx service to serve frontend and proxy API requests
-
-Run locally:
-```powershell
-docker-compose up --build
-```
-
-Access:
-- App: http://localhost/
-- Backend API: http://localhost/api/data
-
-## Run services locally (recommended for development)
-
-Backend:
-
-```powershell
-cd backend
-npm install
-npm start
-```
-
-Frontend:
-
-```powershell
-cd frontend
-npm install
-npm start
-```
-
-If you run the frontend and backend separately, ensure the frontend dev server proxy or `REACT_APP_API_URL` points to the backend port.
-
-## Project structure
-
-- `frontend/` — React app sources
-- `backend/` — Express server sources
-- `nginx/` — reverse proxy configuration
-- `docker-compose.yml` — defines services, networks, and volumes
-
-## Environment variables
-
-Add any necessary `.env` variables per service. Example:
-
-- Backend: `PORT`, `NODE_ENV`, `DATABASE_URL`
-- Frontend: `REACT_APP_API_URL`
-
-Create `.env` files locally and do not commit them.
-
-## Contributing
-
+Contributing
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Commit and push, then open a pull request
+3. Commit, push, and open a pull request
 
-## License
-
-<<<<<<< HEAD
-This project is released under the MIT License. A `LICENSE` file is included in the repository.
-
----
-
-If you want, I can add CI badges, a deployment pipeline, or a demo screenshot next.
-=======
+License
 This project is released under the MIT License (see `LICENSE`).
 
----
-
-If you want, I can run Docker Compose now and perform smoke tests to verify everything is up, or implement additional improvements (frontend polish, CI expansion, secrets management).
-
->>>>>>> frontend-ui-work
+If you'd like, I can run Docker Compose and perform smoke tests, or proceed to add frontend unit tests and update CI to run them.
